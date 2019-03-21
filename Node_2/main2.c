@@ -39,6 +39,14 @@ SimpleDelay(void)
     SysCtlDelay(16000000 / 3);
 }
 
+void
+StartUpState(void)
+{
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
+    // SimpleDelay();
+    // GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
+}
+
 int
 main(void)
 {
@@ -63,6 +71,7 @@ main(void)
     InitConsole();
     CAN_init();
     portF_init();
+    StartUpState();
 
     /////////////////////////////////////////////////////////////////////
     // Received msg //
@@ -121,6 +130,10 @@ main(void)
             
             // wait one second
             SimpleDelay();
+        }
+        else
+        {
+            StartUpState();
         }
 
         if(g_bTXFlag)

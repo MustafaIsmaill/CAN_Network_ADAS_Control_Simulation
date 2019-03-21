@@ -15,6 +15,8 @@
 #include "utils/uartstdio.h"
 
 #define RED_LED   GPIO_PIN_1
+#define BLUE_LED  GPIO_PIN_2
+
 #define SW1       GPIO_PIN_4
 
 void portF_init(void);

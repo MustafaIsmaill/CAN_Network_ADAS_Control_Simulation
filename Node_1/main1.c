@@ -40,6 +40,14 @@ SimpleDelay(void)
     SysCtlDelay(16000000 / 3);
 }
 
+void
+StartUpState(void)
+{
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
+    SimpleDelay();
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
+}
+
 int
 main(void)
 {
@@ -94,6 +102,7 @@ main(void)
     sCANMessage_sent.ui32Flags = MSG_OBJ_TX_INT_ENABLE;
     sCANMessage_sent.ui32MsgLen = 1;
     sCANMessage_sent.pui8MsgData = pui8MsgData_sent;
+    StartUpState();
     CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);
     //////////////////////////////////////////////
 
