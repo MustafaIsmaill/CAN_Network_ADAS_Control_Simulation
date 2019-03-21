@@ -20,6 +20,8 @@ main1.obj: ../driverlib/sysctl.h
 main1.obj: ../driverlib/uart.h
 main1.obj: ../utils/uartstdio.h
 main1.obj: /home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdarg.h
+main1.obj: ../drivers/can.h
+main1.obj: ../drivers/portF.h
 
 ../main1.c: 
 /home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdbool.h: 
@@ -41,3 +43,5 @@ main1.obj: /home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/inc
 ../driverlib/uart.h: 
 ../utils/uartstdio.h: 
 /home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdarg.h: 
+../drivers/can.h: 
+../drivers/portF.h: 

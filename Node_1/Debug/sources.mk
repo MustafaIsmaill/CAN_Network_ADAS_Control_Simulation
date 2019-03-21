@@ -117,5 +117,6 @@ driverlib/ccs/Debug \
 driverlib/ewarm/Exe \
 driverlib/gcc \
 driverlib/rvmdk \
+drivers \
 utils \
 
