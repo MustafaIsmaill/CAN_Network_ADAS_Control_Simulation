@@ -71,7 +71,6 @@ main(void)
     InitConsole();
     CAN_init();
     portF_init();
-    StartUpState();
 
     /////////////////////////////////////////////////////////////////////
     // Received msg //
@@ -105,6 +104,12 @@ main(void)
     // CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);
     //////////////////////////////////////////////
 
+    while(!g_bRXFlag)
+    {
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
+    }
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
+
     while(1)
     {
         // message received
@@ -121,6 +126,34 @@ main(void)
 
             // wait one second
             SimpleDelay();
+
+            if(button_Flag)
+            {
+                if(pui8MsgData_received[0] == 0)
+                {
+                    pui8MsgData_sent[0] = 1;
+                    sCANMessage_sent.ui32MsgID = 2;
+                }
+                else if(pui8MsgData_received[0] == 1)
+                {
+                    pui8MsgData_sent[0] = 0;
+                    sCANMessage_sent.ui32MsgID = 1;
+                }
+                button_Flag = 0;
+            }
+            else
+            {
+                if(pui8MsgData_received[0] == 0)
+                {
+                    pui8MsgData_sent[0] = 0;
+                    sCANMessage_sent.ui32MsgID = 1;
+                }
+                else if(pui8MsgData_received[0] == 1)
+                {
+                    pui8MsgData_sent[0] = 1;
+                    sCANMessage_sent.ui32MsgID = 2;
+                }
+            }
 
             // send token to next node
             CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);

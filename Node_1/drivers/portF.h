@@ -19,6 +19,8 @@
 
 #define SW1       GPIO_PIN_4
 
+extern volatile bool button_Flag;
+
 void portF_init(void);
 
 #endif // __PORTF_H__

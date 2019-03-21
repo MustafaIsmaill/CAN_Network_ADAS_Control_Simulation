@@ -72,6 +72,7 @@ main(void)
     InitConsole();
     CAN_init();
     portF_init();
+    StartUpState();
 
     /////////////////////////////////////////////////////////////////////
     // Received msg //
@@ -102,7 +103,6 @@ main(void)
     sCANMessage_sent.ui32Flags = MSG_OBJ_TX_INT_ENABLE;
     sCANMessage_sent.ui32MsgLen = 1;
     sCANMessage_sent.pui8MsgData = pui8MsgData_sent;
-    StartUpState();
     CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);
     //////////////////////////////////////////////
 
@@ -122,6 +122,34 @@ main(void)
 
             // wait one second
             SimpleDelay();
+
+            if(button_Flag)
+            {
+                if(pui8MsgData_received[0] == 0)
+                {
+                    pui8MsgData_sent[0] = 1;
+                    sCANMessage_sent.ui32MsgID = 3;
+                }
+                else if(pui8MsgData_received[0] == 1)
+                {
+                    pui8MsgData_sent[0] = 0;
+                    sCANMessage_sent.ui32MsgID = 2;
+                }
+                button_Flag = 0;
+            }
+            else
+            {
+                if(pui8MsgData_received[0] == 0)
+                {
+                    pui8MsgData_sent[0] = 0;
+                    sCANMessage_sent.ui32MsgID = 2;
+                }
+                else if(pui8MsgData_received[0] == 1)
+                {
+                    pui8MsgData_sent[0] = 1;
+                    sCANMessage_sent.ui32MsgID = 3;
+                }
+            }
 
             // send token to next node
             CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);

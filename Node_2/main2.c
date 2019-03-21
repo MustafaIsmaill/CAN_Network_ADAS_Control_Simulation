@@ -39,13 +39,6 @@ SimpleDelay(void)
     SysCtlDelay(16000000 / 3);
 }
 
-void
-StartUpState(void)
-{
-    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
-    // SimpleDelay();
-    // GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
-}
 
 int
 main(void)
@@ -71,7 +64,6 @@ main(void)
     InitConsole();
     CAN_init();
     portF_init();
-    StartUpState();
 
     /////////////////////////////////////////////////////////////////////
     // Received msg //
@@ -97,13 +89,19 @@ main(void)
     pui8MsgData_sent = (uint8_t *)&ui32MsgData_sent;
 
     ui32MsgData_sent = 0;
-    sCANMessage_sent.ui32MsgID = 1;
+    sCANMessage_sent.ui32MsgID = 3;
     sCANMessage_sent.ui32MsgIDMask = 0;
     sCANMessage_sent.ui32Flags = MSG_OBJ_TX_INT_ENABLE;
     sCANMessage_sent.ui32MsgLen = 1;
     sCANMessage_sent.pui8MsgData = pui8MsgData_sent;
     // CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);
     //////////////////////////////////////////////
+
+    while(!g_bRXFlag)
+    {
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
+    }
+    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
 
     while(1)
     {
@@ -122,6 +120,34 @@ main(void)
             // wait one second
             SimpleDelay();
 
+//            UARTprintf("data: %i", pui8MsgData_received[0]);
+            if(button_Flag)
+            {
+                if(pui8MsgData_received[0] == 0)
+                {
+                    pui8MsgData_sent[0] = 1;
+                    sCANMessage_sent.ui32MsgID = 1;
+                }
+                else if(pui8MsgData_received[0] == 1)
+                {
+                    pui8MsgData_sent[0] = 0;
+                    sCANMessage_sent.ui32MsgID = 3;
+                }
+                button_Flag = 0;
+            }
+            else
+            {
+                if(pui8MsgData_received[0] == 0)
+                {
+                    pui8MsgData_sent[0] = 0;
+                    sCANMessage_sent.ui32MsgID = 3;
+                }
+                else if(pui8MsgData_received[0] == 1)
+                {
+                    pui8MsgData_sent[0] = 1;
+                    sCANMessage_sent.ui32MsgID = 1;
+                }
+            }
             // send token to next node
             CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);
 
@@ -131,11 +157,6 @@ main(void)
             // wait one second
             SimpleDelay();
         }
-        else
-        {
-            StartUpState();
-        }
-
         if(g_bTXFlag)
         {
             g_bTXFlag = 0;
