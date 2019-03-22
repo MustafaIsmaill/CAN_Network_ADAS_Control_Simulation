@@ -52,6 +52,7 @@ ORDERED_OBJS += \
 "../driverlib/rvmdk/driverlib.lib" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
+-l"/home/mustafaismail/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib" \
 
 -include ../makefile.init
 

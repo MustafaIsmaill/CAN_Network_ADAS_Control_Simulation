@@ -27,7 +27,6 @@ C_DEPS__QUOTED += \
 "tm4c123gh6pm_startup_ccs.d" 
 
 C_SRCS__QUOTED += \
-"../main1.c" \
 "../tm4c123gh6pm_startup_ccs.c" 
 
 

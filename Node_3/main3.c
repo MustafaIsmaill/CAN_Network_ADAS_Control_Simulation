@@ -118,14 +118,14 @@ main(void)
             // read msg
             CANMessageGet(CAN0_BASE, 1, &sCANMessage_received, 0);
 
-            // clear receive flag
-            g_bRXFlag = 0;
-
             // red led on
             GPIOPinWrite(GPIO_PORTF_BASE, RED_LED, RED_LED);
 
             // wait one second
             SimpleDelay();
+
+            // clear receive flag
+            g_bRXFlag = 0;
 
             if(button_Flag)
             {
@@ -163,6 +163,9 @@ main(void)
 
             // wait one second
             SimpleDelay();
+
+            // clear receive flag
+            g_bRXFlag = 0;
         }
 
         if(g_bTXFlag)

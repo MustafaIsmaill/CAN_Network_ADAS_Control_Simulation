@@ -193,7 +193,7 @@ all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(A_SRCS) $(GEN_CMDS)
 Node_3.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(A_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Node_3.map" --heap_size=0 --stack_size=512 -i"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib" -i"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Node_3_linkInfo.xml" --rom_model -o "Node_3.out" $(ORDERED_OBJS) $(A_SRCS)
+	"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --fp_mode=strict --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Node_3.map" --heap_size=0 --stack_size=512 -i"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib" -i"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Node_3_linkInfo.xml" --rom_model -o "Node_3.out" $(ORDERED_OBJS) $(A_SRCS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

@@ -1,12 +1,20 @@
 #include "portF.h"
+#include "can.h"
 
 volatile bool button_Flag = 0;
 
 void
 portF_handler(void)
 {
-    button_Flag = 1;
-    GPIOIntClear(GPIO_PORTF_BASE, SW1);
+    if(g_bRXFlag)
+    {
+        button_Flag = 1;
+        GPIOIntClear(GPIO_PORTF_BASE, SW1);
+    }
+    else
+    {
+        GPIOIntClear(GPIO_PORTF_BASE, SW1);
+    }
 }
 
 void

@@ -37,7 +37,6 @@ C_SRCS += \
 ../driverlib/timer.c \
 ../driverlib/uart.c \
 ../driverlib/udma.c \
-../driverlib/usb.c \
 ../driverlib/watchdog.c 
 
 S_DEPS += \
@@ -74,7 +73,6 @@ C_DEPS += \
 ./driverlib/timer.d \
 ./driverlib/uart.d \
 ./driverlib/udma.d \
-./driverlib/usb.d \
 ./driverlib/watchdog.d 
 
 OBJS += \
@@ -109,7 +107,6 @@ OBJS += \
 ./driverlib/timer.obj \
 ./driverlib/uart.obj \
 ./driverlib/udma.obj \
-./driverlib/usb.obj \
 ./driverlib/watchdog.obj 
 
 OBJS__QUOTED += \
@@ -144,7 +141,6 @@ OBJS__QUOTED += \
 "driverlib/timer.obj" \
 "driverlib/uart.obj" \
 "driverlib/udma.obj" \
-"driverlib/usb.obj" \
 "driverlib/watchdog.obj" 
 
 C_DEPS__QUOTED += \
@@ -178,7 +174,6 @@ C_DEPS__QUOTED += \
 "driverlib/timer.d" \
 "driverlib/uart.d" \
 "driverlib/udma.d" \
-"driverlib/usb.d" \
 "driverlib/watchdog.d" 
 
 S_DEPS__QUOTED += \
@@ -215,7 +210,6 @@ C_SRCS__QUOTED += \
 "../driverlib/timer.c" \
 "../driverlib/uart.c" \
 "../driverlib/udma.c" \
-"../driverlib/usb.c" \
 "../driverlib/watchdog.c" 
 
 S_SRCS__QUOTED += \

@@ -50,6 +50,8 @@
 									<listOptionValue builtIn="false" value="${CG_TOOL_ROOT}/include"/>
 								</option>
 								<option id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.LITTLE_ENDIAN.2118971134" name="Little endian code [See 'General' page to edit] (--little_endian, -me)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.LITTLE_ENDIAN" useByScannerDiscovery="false" value="true" valueType="boolean"/>
+								<option id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.CHECK_MISRA.634769253" name="Enable checking of MISRA-C:2004 rules (--check_misra)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.CHECK_MISRA" value="" valueType="string"/>
+								<option id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.FP_MODE.1185108191" name="Floating Point mode (--fp_mode)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.FP_MODE" value="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.FP_MODE.strict" valueType="enumerated"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__C_SRCS.1711512482" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__C_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__CPP_SRCS.1007630804" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__CPP_SRCS"/>
 								<inputType id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__ASM_SRCS.1957482850" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__ASM_SRCS"/>
@@ -78,6 +80,15 @@
 							<tool id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.hex.1681749974" name="ARM Hex Utility" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.hex"/>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.ti.ccstudio.buildDefinitions.TMS470.Debug.1484352473.26770581" name="main3.c" rcbsApplicability="disable" resourcePath="main3.c" toolsToInvoke="com.ti.ccstudio.buildDefinitions.TMS470_18.1.exe.compilerDebug.12849753.1778192798">
+						<tool id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.exe.compilerDebug.12849753.1778192798" name="ARM Compiler" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.exe.compilerDebug.12849753">
+							<option id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.CHECK_MISRA.885485175" name="Enable checking of MISRA-C:2004 rules (--check_misra)" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compilerID.CHECK_MISRA" value="" valueType="string"/>
+							<inputType id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__C_SRCS.825129391" name="C Sources" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__C_SRCS"/>
+							<inputType id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__CPP_SRCS.603424726" name="C++ Sources" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__CPP_SRCS"/>
+							<inputType id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__ASM_SRCS.531874488" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__ASM_SRCS"/>
+							<inputType id="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__ASM2_SRCS.362701663" name="Assembly Sources" superClass="com.ti.ccstudio.buildDefinitions.TMS470_18.1.compiler.inputType__ASM2_SRCS"/>
+						</tool>
+					</fileInfo>
 				</configuration>
 			</storageModule>
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>

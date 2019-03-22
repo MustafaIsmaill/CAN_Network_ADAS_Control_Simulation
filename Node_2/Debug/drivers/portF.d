@@ -21,6 +21,7 @@ drivers/portF.obj: /home/mustafaismail/workspace_v8/Node_2/driverlib/sysctl.h
 drivers/portF.obj: /home/mustafaismail/workspace_v8/Node_2/driverlib/uart.h
 drivers/portF.obj: /home/mustafaismail/workspace_v8/Node_2/utils/uartstdio.h
 drivers/portF.obj: /home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdarg.h
+drivers/portF.obj: ../drivers/can.h
 
 ../drivers/portF.c: 
 ../drivers/portF.h: 
@@ -43,3 +44,4 @@ drivers/portF.obj: /home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4
 /home/mustafaismail/workspace_v8/Node_2/driverlib/uart.h: 
 /home/mustafaismail/workspace_v8/Node_2/utils/uartstdio.h: 
 /home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include/stdarg.h: 
+../drivers/can.h: 
