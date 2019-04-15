@@ -2,6 +2,8 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
+SHELL = cmd.exe
+
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../drivers/can.c \
@@ -16,12 +18,12 @@ OBJS += \
 ./drivers/portF.obj 
 
 OBJS__QUOTED += \
-"drivers/can.obj" \
-"drivers/portF.obj" 
+"drivers\can.obj" \
+"drivers\portF.obj" 
 
 C_DEPS__QUOTED += \
-"drivers/can.d" \
-"drivers/portF.d" 
+"drivers\can.d" \
+"drivers\portF.d" 
 
 C_SRCS__QUOTED += \
 "../drivers/can.c" \

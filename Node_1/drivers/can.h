@@ -14,13 +14,18 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
+/*Declaration of variables*/
 extern volatile uint32_t g_ui32MsgCount;
 
-// A flag to indicate that some transmission error occurred.
+/*A flag to indicate that some transmission error occurred.*/
 extern volatile bool g_bErrFlag;
+/*A flag to indicate that a message was received.*/
 extern volatile bool g_bRXFlag;
+/*A flag to indicate that a message has been transmitted*/
 extern volatile bool g_bTXFlag;
 
+
+/*Function declarations*/
 void CANIntHandler(void);
 extern void CAN_init(void);
 

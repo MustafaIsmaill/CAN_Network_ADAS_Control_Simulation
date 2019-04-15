@@ -2,7 +2,9 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-CG_TOOL_ROOT := /home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS
+SHELL = cmd.exe
+
+CG_TOOL_ROOT := C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.5.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -41,7 +43,6 @@ ORDERED_OBJS += \
 "./driverlib/timer.obj" \
 "./driverlib/uart.obj" \
 "./driverlib/udma.obj" \
-"./driverlib/usb.obj" \
 "./driverlib/watchdog.obj" \
 "./drivers/can.obj" \
 "./drivers/portF.obj" \
@@ -52,12 +53,11 @@ ORDERED_OBJS += \
 "../driverlib/rvmdk/driverlib.lib" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
--l"/home/mustafaismail/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib" \
 
 -include ../makefile.init
 
-RM := rm -rf
-RMDIR := rm -rf
+RM := DEL /F
+RMDIR := RMDIR /S/Q
 
 # All of the sources participating in the build are defined here
 -include sources.mk
@@ -193,23 +193,23 @@ all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(A_SRCS) $(GEN_CMDS)
 Node_3.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(A_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: ARM Linker'
-	"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --fp_mode=strict --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Node_3.map" --heap_size=0 --stack_size=512 -i"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/lib" -i"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Node_3_linkInfo.xml" --rom_model -o "Node_3.out" $(ORDERED_OBJS) $(A_SRCS)
+	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.5.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"Node_3.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.5.LTS/lib" -i"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.5.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="Node_3_linkInfo.xml" --rom_model -o "Node_3.out" $(ORDERED_OBJS) $(A_SRCS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 Node_3.hex: $(EXE_OUTPUTS)
 	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"/home/mustafaismail/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.4.LTS/bin/armhex"  -o "Node_3.hex" $(EXE_OUTPUTS__QUOTED)
+	"C:/ti/ccsv8/tools/compiler/ti-cgt-arm_18.1.5.LTS/bin/armhex"  -o "Node_3.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main3.obj" "tm4c123gh6pm_startup_ccs.obj" "driverlib/adc.obj" "driverlib/aes.obj" "driverlib/can.obj" "driverlib/comp.obj" "driverlib/cpu.obj" "driverlib/crc.obj" "driverlib/des.obj" "driverlib/eeprom.obj" "driverlib/emac.obj" "driverlib/epi.obj" "driverlib/epi_workaround_ccs.obj" "driverlib/flash.obj" "driverlib/fpu.obj" "driverlib/gpio.obj" "driverlib/hibernate.obj" "driverlib/i2c.obj" "driverlib/interrupt.obj" "driverlib/lcd.obj" "driverlib/mpu.obj" "driverlib/onewire.obj" "driverlib/pwm.obj" "driverlib/qei.obj" "driverlib/shamd5.obj" "driverlib/ssi.obj" "driverlib/sw_crc.obj" "driverlib/sysctl.obj" "driverlib/sysexc.obj" "driverlib/systick.obj" "driverlib/timer.obj" "driverlib/uart.obj" "driverlib/udma.obj" "driverlib/usb.obj" "driverlib/watchdog.obj" "drivers/can.obj" "drivers/portF.obj" "utils/uartstdio.obj" "utils/ustdlib.obj" 
-	-$(RM) "main3.d" "tm4c123gh6pm_startup_ccs.d" "driverlib/adc.d" "driverlib/aes.d" "driverlib/can.d" "driverlib/comp.d" "driverlib/cpu.d" "driverlib/crc.d" "driverlib/des.d" "driverlib/eeprom.d" "driverlib/emac.d" "driverlib/epi.d" "driverlib/flash.d" "driverlib/fpu.d" "driverlib/gpio.d" "driverlib/hibernate.d" "driverlib/i2c.d" "driverlib/interrupt.d" "driverlib/lcd.d" "driverlib/mpu.d" "driverlib/onewire.d" "driverlib/pwm.d" "driverlib/qei.d" "driverlib/shamd5.d" "driverlib/ssi.d" "driverlib/sw_crc.d" "driverlib/sysctl.d" "driverlib/sysexc.d" "driverlib/systick.d" "driverlib/timer.d" "driverlib/uart.d" "driverlib/udma.d" "driverlib/usb.d" "driverlib/watchdog.d" "drivers/can.d" "drivers/portF.d" "utils/uartstdio.d" "utils/ustdlib.d" 
-	-$(RM) "driverlib/epi_workaround_ccs.d" 
+	-$(RM) "main3.obj" "tm4c123gh6pm_startup_ccs.obj" "driverlib\adc.obj" "driverlib\aes.obj" "driverlib\can.obj" "driverlib\comp.obj" "driverlib\cpu.obj" "driverlib\crc.obj" "driverlib\des.obj" "driverlib\eeprom.obj" "driverlib\emac.obj" "driverlib\epi.obj" "driverlib\epi_workaround_ccs.obj" "driverlib\flash.obj" "driverlib\fpu.obj" "driverlib\gpio.obj" "driverlib\hibernate.obj" "driverlib\i2c.obj" "driverlib\interrupt.obj" "driverlib\lcd.obj" "driverlib\mpu.obj" "driverlib\onewire.obj" "driverlib\pwm.obj" "driverlib\qei.obj" "driverlib\shamd5.obj" "driverlib\ssi.obj" "driverlib\sw_crc.obj" "driverlib\sysctl.obj" "driverlib\sysexc.obj" "driverlib\systick.obj" "driverlib\timer.obj" "driverlib\uart.obj" "driverlib\udma.obj" "driverlib\watchdog.obj" "drivers\can.obj" "drivers\portF.obj" "utils\uartstdio.obj" "utils\ustdlib.obj" 
+	-$(RM) "main3.d" "tm4c123gh6pm_startup_ccs.d" "driverlib\adc.d" "driverlib\aes.d" "driverlib\can.d" "driverlib\comp.d" "driverlib\cpu.d" "driverlib\crc.d" "driverlib\des.d" "driverlib\eeprom.d" "driverlib\emac.d" "driverlib\epi.d" "driverlib\flash.d" "driverlib\fpu.d" "driverlib\gpio.d" "driverlib\hibernate.d" "driverlib\i2c.d" "driverlib\interrupt.d" "driverlib\lcd.d" "driverlib\mpu.d" "driverlib\onewire.d" "driverlib\pwm.d" "driverlib\qei.d" "driverlib\shamd5.d" "driverlib\ssi.d" "driverlib\sw_crc.d" "driverlib\sysctl.d" "driverlib\sysexc.d" "driverlib\systick.d" "driverlib\timer.d" "driverlib\uart.d" "driverlib\udma.d" "driverlib\watchdog.d" "drivers\can.d" "drivers\portF.d" "utils\uartstdio.d" "utils\ustdlib.d" 
+	-$(RM) "driverlib\epi_workaround_ccs.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

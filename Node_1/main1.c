@@ -10,12 +10,18 @@
 #include "driverlib/sysctl.h"
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
-
 #include "drivers/can.h"
 #include "drivers/portF.h"
 
-// This function sets up UART0 to be used for a console to display information
-// as the example is running.
+/* Declaration of used Functions*/
+void InitConsole(void);
+void SimpleDelay(void);
+void StartUpState(void);
+int main(void);
+
+
+/*This function sets up UART0 to be used for a console to display information
+as the example is running*/
 void
 InitConsole(void)
 {
@@ -33,16 +39,20 @@ InitConsole(void)
     UARTStdioConfig(0, 115200, 16000000);
 }
 
+
+/* Function to execute a delay of 1 second*/
 void
 SimpleDelay(void)
 {
-    // 1 second
     SysCtlDelay(16000000 / 3);
 }
 
+
+/* This function is implemented at the start of the program. A blue LED is set on for one second then turned off again*/
 void
 StartUpState(void)
 {
+    UARTprintf("Starting Up\n");
     GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, GPIO_PIN_2);
     SimpleDelay();
     GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0);
@@ -69,13 +79,16 @@ main(void)
                        SYSCTL_XTAL_16MHZ);
     #endif
     
+
+    /*System Initialization*/
     InitConsole();
     CAN_init();
     portF_init();
     StartUpState();
 
-    /////////////////////////////////////////////////////////////////////
-    // Received msg //
+    /*Creation of object for the received message called sCANMessage_received. An array for the received data is created to hold 1 unsigned
+     8-bit integer*/
+
     tCANMsgObject sCANMessage_received;
     uint8_t pui8MsgData_received[1];
 
@@ -86,10 +99,10 @@ main(void)
     sCANMessage_received.pui8MsgData = pui8MsgData_received;
 
     CANMessageSet(CAN0_BASE, 1, &sCANMessage_received, MSG_OBJ_TYPE_RX);
-    /////////////////////////////////////////////////////////////////////
 
-    //////////////////////////////////////////////
-    // Sent message to node 2
+
+
+    /* The first message is sent to node 2. An object for sent messages is created called sCANMessage_sent.*/
     tCANMsgObject sCANMessage_sent;
     
     uint32_t ui32MsgData_sent;
@@ -104,63 +117,91 @@ main(void)
     sCANMessage_sent.ui32MsgLen = 1;
     sCANMessage_sent.pui8MsgData = pui8MsgData_sent;
     CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);
-    //////////////////////////////////////////////
 
+
+    /*Main Program Loop*/
     while(1)
     {
-        // message received
+
+        /* Check if a message is received*/
         if(g_bRXFlag)
         {
-            // read msg
+            UARTprintf("Message Received\n");
+            /*Read Message*/
             CANMessageGet(CAN0_BASE, 1, &sCANMessage_received, 0);
 
-            // red led on
+            /*Turn on Red LED*/
             GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, GPIO_PIN_1);
+            UARTprintf("Turning on red LED\n");
 
-            // wait one second
+            /*Wait One Second*/
             SimpleDelay();
 
-            // clear receive flag
+            /*clear receive flag*/
             g_bRXFlag = 0;
 
+            /*Check if the button to switch direction has been pushed*/
             if(button_Flag)
             {
+                UARTprintf("Button has been pressed\n");
+                /*If the current direction was forward*/
                 if(pui8MsgData_received[0] == 0)
                 {
+                    /*Switch the direction to reverse*/
                     pui8MsgData_sent[0] = 1;
+                    /*Set ID for the next node to 3*/
                     sCANMessage_sent.ui32MsgID = 3;
+                    UARTprintf("Message to be sent to 3\n");
                 }
-                else if(pui8MsgData_received[0] == 1)
+                /*If the current direction was reverse*/
+                else
                 {
+                    /*Switch direction to forward*/
                     pui8MsgData_sent[0] = 0;
+                    /*Set ID for the next node to 2*/
                     sCANMessage_sent.ui32MsgID = 2;
+                    UARTprintf("Message to be sent to 2\n");
                 }
+
+                /*Clear the button flag*/
                 button_Flag = 0;
             }
+
+            /*If the switch button has not been pressed*/
             else
             {
+                UARTprintf("Button was not pressed\n");
+                /*If the direction was forward*/
                 if(pui8MsgData_received[0] == 0)
                 {
+                    /*Keep the direction as it is*/
                     pui8MsgData_sent[0] = 0;
+                    /*Set ID for the next node to 2*/
                     sCANMessage_sent.ui32MsgID = 2;
+                    UARTprintf("Message to be sent to 2\n");
                 }
-                else if(pui8MsgData_received[0] == 1)
+                /*If the direction was reverse*/
+                else
                 {
+                    /*Keep the direction as it is*/
                     pui8MsgData_sent[0] = 1;
+                    /*Set ID for the next node to 3*/
                     sCANMessage_sent.ui32MsgID = 3;
+                    UARTprintf("Message to be sent to 3\n");
                 }
             }
 
-            // send token to next node
+            /* Send token to next node*/
             CANMessageSet(CAN0_BASE, 2, &sCANMessage_sent, MSG_OBJ_TYPE_TX);
+            UARTprintf("Message Sending\n");
 
-            // red led off
+            /* Turn off red LED, indicating the token is no longer at this node*/
             GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0);
+            UARTprintf("Turning off red LED\n");
             
-            // wait one second
-            SimpleDelay();
         }
 
+        /*Clear the send flag if it is still set to high*/
         if(g_bTXFlag)
         {
             g_bTXFlag = 0;
