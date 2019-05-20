@@ -32,6 +32,7 @@ main(void)
     create_token_receive_object();
     create_token_send_object();
     create_distance_send_object();
+    create_command_send_object();
 
     StartUpState();
 

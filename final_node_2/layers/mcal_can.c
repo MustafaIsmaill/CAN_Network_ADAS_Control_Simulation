@@ -59,6 +59,15 @@ CANIntHandler(void)
         /*clear error flag*/
         g_bErrFlag = clear;
     }
+    /*command sent*/
+    else if(ui32Status == (uint32_t)5)
+    {
+        /*clear interrupt flag*/
+        CANIntClear((uint32_t)CAN0_BASE, (uint32_t)5);
+
+        /*clear error flag*/
+        g_bErrFlag = clear;
+    }
     else
     {
 

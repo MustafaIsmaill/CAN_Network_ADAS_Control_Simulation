@@ -16,6 +16,11 @@ tCANMsgObject sCANDistance_sent;
 uint32_t ui32MsgDistance_sent;
 uint8_t *pui8MsgDistance_sent;
 
+/* COMMAND SEND OBJECT */
+tCANMsgObject sCANCommand_sent;
+uint32_t ui32MsgCommand_sent;
+uint8_t *pui8MsgCommand_sent;
+
 void
 token_can_receive(void)
 {
@@ -31,21 +36,15 @@ token_can_send(void)
 void
 distance_can_send(int8_t dist)
 {
-    pui8MsgDistance_sent[0] = dist;
+    pui8MsgDistance_sent[0] = (uint8_t)dist;
     CANMessageSet((uint32_t)CAN0_BASE, (uint32_t)4, &sCANDistance_sent, MSG_OBJ_TYPE_TX);
 }
 
 void
-create_distance_send_object(void)
+command_can_send(uint8_t cmd)
 {
-    pui8MsgDistance_sent = (uint8_t *)&ui32MsgDistance_sent;
-
-    ui32MsgDistance_sent = (uint32_t)0;
-    sCANDistance_sent.ui32MsgID = (uint32_t)4;
-    sCANDistance_sent.ui32MsgIDMask = (uint32_t)0;
-    sCANDistance_sent.ui32Flags = (uint32_t)MSG_OBJ_TX_INT_ENABLE;
-    sCANDistance_sent.ui32MsgLen = (uint32_t)1;
-    sCANDistance_sent.pui8MsgData = pui8MsgDistance_sent;
+    pui8MsgCommand_sent[0] = (uint8_t)cmd;
+    CANMessageSet((uint32_t)CAN0_BASE, (uint32_t)5, &sCANCommand_sent, MSG_OBJ_TYPE_TX);
 }
 
 void
@@ -71,4 +70,30 @@ create_token_send_object(void)
     sCANMessage_sent.ui32Flags = (uint32_t)MSG_OBJ_TX_INT_ENABLE;
     sCANMessage_sent.ui32MsgLen = (uint32_t)1;
     sCANMessage_sent.pui8MsgData = pui8MsgData_sent;
+}
+
+void
+create_distance_send_object(void)
+{
+    pui8MsgDistance_sent = (uint8_t *)&ui32MsgDistance_sent;
+
+    ui32MsgDistance_sent = (uint32_t)0;
+    sCANDistance_sent.ui32MsgID = (uint32_t)4;
+    sCANDistance_sent.ui32MsgIDMask = (uint32_t)0;
+    sCANDistance_sent.ui32Flags = (uint32_t)MSG_OBJ_TX_INT_ENABLE;
+    sCANDistance_sent.ui32MsgLen = (uint32_t)1;
+    sCANDistance_sent.pui8MsgData = pui8MsgDistance_sent;
+}
+
+void
+create_command_send_object(void)
+{
+    pui8MsgCommand_sent = (uint8_t *)&ui32MsgCommand_sent;
+
+    ui32MsgCommand_sent = (uint32_t)0;
+    sCANCommand_sent.ui32MsgID = (uint32_t)5;
+    sCANCommand_sent.ui32MsgIDMask = (uint32_t)0;
+    sCANCommand_sent.ui32Flags = (uint32_t)MSG_OBJ_TX_INT_ENABLE;
+    sCANCommand_sent.ui32MsgLen = (uint32_t)1;
+    sCANCommand_sent.pui8MsgData = pui8MsgCommand_sent;
 }

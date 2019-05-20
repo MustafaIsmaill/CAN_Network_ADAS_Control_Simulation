@@ -35,6 +35,7 @@ distance_sensor_runnable(void)
         UARTprintf("cmd: %i \n", ui8_command);
 
         distance_can_send(i8_distance);
+        command_can_send(ui8_command);
 
         delay_msec(ui32_delay_ms);
     }

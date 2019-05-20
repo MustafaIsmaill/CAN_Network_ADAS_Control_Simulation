@@ -18,8 +18,7 @@
 #include "layers/app_Token_Ring_SWC.h"
 #include "layers/servAL_delay.h"
 #include "layers/servAL_uart.h"
-
-int8_t distance=0;
+#include "layers/app_control.h"
 
 uint8_t main(void);
 
@@ -33,17 +32,13 @@ main(void)
     create_token_receive_object();
     create_token_send_object();
     create_distance_receive_object();
+    create_command_receive_object();
 
     StartUpState();
 
     while(1)
     {
         token_ring_runnable();
-        if(g_bRX_Distance_Flag)
-        {
-            distance = distance_can_receive();
-            UARTprintf("TEST %i \n", distance);
-            g_bRX_Distance_Flag = 0;
-        }
+        control_runnable();
     }
 }

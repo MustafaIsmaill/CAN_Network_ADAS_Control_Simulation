@@ -31,9 +31,11 @@ extern uint8_t *pui8MsgDistance_sent;
 void create_token_send_object(void);
 void create_token_receive_object(void);
 void create_distance_send_object(void);
+void create_command_send_object(void);
 
 void token_can_send(void);
 void token_can_receive(void);
 void distance_can_send(int8_t dist);
+void command_can_send(uint8_t cmd);
 
 #endif /*__SERVAL_CAN_H__*/
