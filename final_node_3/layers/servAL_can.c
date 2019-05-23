@@ -1,20 +1,5 @@
 #include "servAL_can.h"
 
-tCANMsgObject sCANMessage_received;
-uint8_t pui8MsgData_received[1];
-
-tCANMsgObject sCANMessage_sent;
-uint32_t ui32MsgData_sent;
-uint8_t *pui8MsgData_sent;
-
-/* DISTANCE RECEIVE OBJECT */
-tCANMsgObject sCANMessageDistance_received;
-uint8_t pui8MsgDistance_received[1];
-
-/* COMMAND RECEIVE OBJECT */
-tCANMsgObject sCANMessageCommand_received;
-uint8_t pui8MsgCommand_received[1];
-
 void
 token_can_receive(void)
 {

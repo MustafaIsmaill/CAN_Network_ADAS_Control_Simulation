@@ -129,7 +129,7 @@ CAN_init(void)
     defined(TARGET_IS_TM4C129_RA2)
     CANBitRateSet(CAN0_BASE, ui32SysClock, 500000);
 #else
-    CANBitRateSet((uint32_t)CAN0_BASE, (uint32_t)SysCtlClockGet(), (uint32_t)500000);
+    CANBitRateSet((uint32_t)CAN0_BASE, (uint32_t)SysCtlClockGet(), (uint32_t)1000000);
 #endif
 
     /*Setup Interrupt on CAN0*/

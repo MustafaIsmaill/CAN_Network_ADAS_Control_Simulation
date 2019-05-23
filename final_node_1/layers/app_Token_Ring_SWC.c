@@ -18,8 +18,8 @@ token_ring_runnable(void)
         /*Turn on Red LED*/
         Set_Led_Status(RED_LED, HIGH);
 
-        /*Wait One Second*/
-        delay_one_sec();
+        /*Wait A Second*/
+        delay_msec(500);
 
         /* Send token to next node*/
         token_can_send();

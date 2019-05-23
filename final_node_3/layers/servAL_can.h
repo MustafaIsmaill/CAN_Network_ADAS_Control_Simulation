@@ -14,22 +14,20 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
-/* TOKEN RECEIVE OBJECT */
-extern tCANMsgObject sCANMessage_received;
-extern uint8_t pui8MsgData_received[1];
+tCANMsgObject sCANMessage_received;
+uint8_t pui8MsgData_received[1];
 
-/* TOKEN SEND OBJECT */
-extern tCANMsgObject sCANMessage_sent;
-extern uint32_t ui32MsgData_sent;
-extern uint8_t *pui8MsgData_sent;
+tCANMsgObject sCANMessage_sent;
+uint32_t ui32MsgData_sent;
+uint8_t *pui8MsgData_sent;
 
 /* DISTANCE RECEIVE OBJECT */
-extern tCANMsgObject sCANMessageDistance_received;
-extern uint8_t pui8MsgDistance_received[1];
+tCANMsgObject sCANMessageDistance_received;
+uint8_t pui8MsgDistance_received[1];
 
 /* COMMAND RECEIVE OBJECT */
-extern tCANMsgObject sCANMessageCommand_received;
-extern uint8_t pui8MsgCommand_received[1];
+tCANMsgObject sCANMessageCommand_received;
+uint8_t pui8MsgCommand_received[1];
 
 void create_token_send_object(void);
 void create_token_receive_object(void);

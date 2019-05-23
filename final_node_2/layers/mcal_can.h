@@ -23,6 +23,8 @@ extern volatile bool g_bErrFlag;
 extern volatile bool g_bRXFlag;
 /*A flag to indicate that a message has been transmitted*/
 extern volatile bool g_bTXFlag;
+/*A flag to indicate that diagnostic was received.*/
+extern volatile bool g_diagnostic_Flag;
 
 /*Function declarations*/
 void CANIntHandler(void);

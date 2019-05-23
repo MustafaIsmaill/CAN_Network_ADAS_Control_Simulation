@@ -24,6 +24,8 @@ extern volatile bool g_bRXFlag;
 /*A flag to indicate that a message has been transmitted*/
 extern volatile bool g_bTXFlag;
 
+extern volatile bool g_Diagnostic_Flag;
+
 /*Function declarations*/
 void CANIntHandler(void);
 void CAN_init(void);

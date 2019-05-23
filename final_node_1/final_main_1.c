@@ -17,6 +17,9 @@
 #include "layers/servAL_can.h"
 #include "layers/app_Token_Ring_SWC.h"
 #include "layers/servAL_delay.h"
+#include "layers/servAL_uart.h"
+#include "layers/app_diagnostic.h"
+#include "layers/servAL_diagnostic.h"
 
 uint8_t main(void);
 
@@ -25,13 +28,16 @@ main(void)
 {
     CAN_init();
     portF_init();
+    uart_init();
     StartUpState();
 
     create_token_receive_object();
     create_token_send_object();
+    create_diagnostic_send_object();
 
     while(1)
     {
         token_ring_runnable();
+        diagnostic_runnable();
     }
 }

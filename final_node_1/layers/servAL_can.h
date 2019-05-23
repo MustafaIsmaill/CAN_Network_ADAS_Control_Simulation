@@ -14,17 +14,26 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
-extern tCANMsgObject sCANMessage_received;
-extern uint8_t pui8MsgData_received[1];
+/* TOKEN RECEIVE MSG */
+tCANMsgObject sCANMessage_received;
+uint8_t pui8MsgData_received[1];
 
-extern tCANMsgObject sCANMessage_sent;
-extern uint32_t ui32MsgData_sent;
-extern uint8_t *pui8MsgData_sent;
+/* TOKEN SEND MSG */
+tCANMsgObject sCANMessage_sent;
+uint32_t ui32MsgData_sent;
+uint8_t *pui8MsgData_sent;
+
+/* DIAGNOSTIC SEND MSG */
+tCANMsgObject sCANDiagnostic_sent;
+uint8_t ui32MsgDiagnostic_sent[3];
+uint8_t *pui8MsgDiagnostic_sent;
 
 void create_token_send_object(void);
 void create_token_receive_object(void);
+void create_diagnostic_send_object(void);
 
 void token_can_send(void);
 void token_can_receive(void);
+void diagnostic_can_send(uint8_t b1, uint8_t b2, uint8_t b3);
 
 #endif /*__SERVAL_CAN_H__*/

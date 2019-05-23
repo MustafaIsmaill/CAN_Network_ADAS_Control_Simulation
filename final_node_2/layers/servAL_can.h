@@ -14,28 +14,41 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
+#define ZERO    0U
+
 /* TOKEN RECEIVE OBJECT */
-extern tCANMsgObject sCANMessage_received;
-extern uint8_t pui8MsgData_received[1];
+tCANMsgObject sCANMessage_received;
+uint8_t pui8MsgData_received[1];
 
 /* TOKEN SEND OBJECT */
-extern tCANMsgObject sCANMessage_sent;
-extern uint32_t ui32MsgData_sent;
-extern uint8_t *pui8MsgData_sent;
+tCANMsgObject sCANMessage_sent;
+uint32_t ui32MsgData_sent;
+uint8_t *pui8MsgData_sent;
 
 /* DISTANCE SEND OBJECT */
-extern tCANMsgObject sCANDistance_sent;
-extern uint32_t ui32MsgDistance_sent;
-extern uint8_t *pui8MsgDistance_sent;
+tCANMsgObject sCANDistance_sent;
+uint32_t ui32MsgDistance_sent;
+uint8_t *pui8MsgDistance_sent;
+
+/* COMMAND SEND OBJECT */
+tCANMsgObject sCANCommand_sent;
+uint32_t ui32MsgCommand_sent;
+uint8_t *pui8MsgCommand_sent;
+
+/* DIAGNOSTIC RECEIVE OBJECT */
+tCANMsgObject sCANDiagnostic_received;
+uint8_t pui8MsgDiagnostic_received[3];
 
 void create_token_send_object(void);
 void create_token_receive_object(void);
 void create_distance_send_object(void);
 void create_command_send_object(void);
+void create_diagnostic_receive_object(void);
 
 void token_can_send(void);
 void token_can_receive(void);
 void distance_can_send(int8_t dist);
 void command_can_send(uint8_t cmd);
+void diagnostic_can_receive(void);
 
 #endif /*__SERVAL_CAN_H__*/

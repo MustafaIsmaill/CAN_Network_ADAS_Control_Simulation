@@ -1,26 +1,5 @@
 #include "servAL_can.h"
 
-#define ZERO    0U
-
-/* TOKEN RECEIVE OBJECT */
-tCANMsgObject sCANMessage_received;
-uint8_t pui8MsgData_received[1];
-
-/* TOKEN SEND OBJECT */
-tCANMsgObject sCANMessage_sent;
-uint32_t ui32MsgData_sent;
-uint8_t *pui8MsgData_sent;
-
-/* DISTANCE SEND OBJECT */
-tCANMsgObject sCANDistance_sent;
-uint32_t ui32MsgDistance_sent;
-uint8_t *pui8MsgDistance_sent;
-
-/* COMMAND SEND OBJECT */
-tCANMsgObject sCANCommand_sent;
-uint32_t ui32MsgCommand_sent;
-uint8_t *pui8MsgCommand_sent;
-
 void
 token_can_receive(void)
 {
@@ -36,15 +15,36 @@ token_can_send(void)
 void
 distance_can_send(int8_t dist)
 {
-    pui8MsgDistance_sent[0] = (uint8_t)dist;
+    ui32MsgDistance_sent = (uint32_t)dist;
     CANMessageSet((uint32_t)CAN0_BASE, (uint32_t)4, &sCANDistance_sent, MSG_OBJ_TYPE_TX);
 }
 
 void
 command_can_send(uint8_t cmd)
 {
-    pui8MsgCommand_sent[0] = (uint8_t)cmd;
+    ui32MsgCommand_sent = (uint32_t)cmd;
     CANMessageSet((uint32_t)CAN0_BASE, (uint32_t)5, &sCANCommand_sent, MSG_OBJ_TYPE_TX);
+}
+
+void
+diagnostic_can_receive(void)
+{
+    CANMessageGet((uint32_t)CAN0_BASE, (uint32_t)6, &sCANDiagnostic_received, (uint8_t)0);
+    UARTprintf("%X\n", pui8MsgDiagnostic_received[0]);
+    UARTprintf("%X\n", pui8MsgDiagnostic_received[1]);
+    UARTprintf("%X\n", pui8MsgDiagnostic_received[2]);
+}
+
+void
+create_diagnostic_receive_object(void)
+{
+    sCANDiagnostic_received.ui32MsgID = (uint32_t)6;
+    sCANDiagnostic_received.ui32MsgIDMask = (uint32_t)0xFFFFFFFFU;
+    sCANDiagnostic_received.ui32Flags = (uint32_t)MSG_OBJ_RX_INT_ENABLE | (uint32_t)MSG_OBJ_USE_ID_FILTER;
+    sCANDiagnostic_received.ui32MsgLen = (uint32_t)3;
+    sCANDiagnostic_received.pui8MsgData = pui8MsgDiagnostic_received;
+
+    CANMessageSet((uint32_t)CAN0_BASE, (uint32_t)6, &sCANDiagnostic_received, MSG_OBJ_TYPE_RX);
 }
 
 void

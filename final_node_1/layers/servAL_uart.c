@@ -3,29 +3,28 @@
 void
 uart_init(void)
 {
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
+    SysCtlPeripheralEnable((uint32_t)SYSCTL_PERIPH_GPIOA);
 
-    GPIOPinConfigure(GPIO_PA0_U0RX);
-    GPIOPinConfigure(GPIO_PA1_U0TX);
+    GPIOPinConfigure((uint32_t)GPIO_PA0_U0RX);
+    GPIOPinConfigure((uint32_t)GPIO_PA1_U0TX);
 
-    SysCtlPeripheralEnable(SYSCTL_PERIPH_UART0);
+    SysCtlPeripheralEnable((uint32_t)SYSCTL_PERIPH_UART0);
 
-    UARTClockSourceSet(UART0_BASE, UART_CLOCK_PIOSC);
+    UARTClockSourceSet((uint32_t)UART0_BASE, UART_CLOCK_PIOSC);
 
-    GPIOPinTypeUART(GPIO_PORTA_BASE, GPIO_PIN_0 | GPIO_PIN_1);
+    GPIOPinTypeUART((uint32_t)GPIO_PORTA_BASE, (uint32_t)GPIO_PIN_0 | (uint32_t)GPIO_PIN_1);
 
-    UARTStdioConfig(0, 115200, 16000000);
+    UARTStdioConfig((uint32_t)0, (uint32_t)256000, (uint32_t)16000000);
 }
 
-uint8_t
+uint32_t
 uart_receive(void)
 {
-    if(UARTCharsAvail(UART0_BASE))
+    if(UARTCharsAvail((uint32_t)UART0_BASE))
     {
-        ui8_rec_char =  UARTCharGetNonBlocking(UART0_BASE);
+        ui32_rec_char =  UARTCharGetNonBlocking((uint32_t)UART0_BASE);
     }
-
-    return ui8_rec_char;
+    return ui32_rec_char;
 }
 
 void

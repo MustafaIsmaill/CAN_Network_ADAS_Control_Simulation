@@ -9,6 +9,8 @@ volatile uint32_t g_ui32MsgCount = 0;
 const bool set = 1;
 const bool clear = 0;
 
+volatile bool g_diagnostic_Flag = 0;
+
 /*Interrupt Handler for CAN communication*/
 void
 CANIntHandler(void)
@@ -68,6 +70,16 @@ CANIntHandler(void)
         /*clear error flag*/
         g_bErrFlag = clear;
     }
+    else if(ui32Status == (uint32_t)6)
+    {
+        /*clear interrupt flag*/
+        CANIntClear((uint32_t)CAN0_BASE, (uint32_t)6);
+
+        g_diagnostic_Flag = set;
+
+        /*clear error flag*/
+        g_bErrFlag = clear;
+    }
     else
     {
 
@@ -120,7 +132,7 @@ CAN_init(void)
     defined(TARGET_IS_TM4C129_RA2)
     CANBitRateSet(CAN0_BASE, ui32SysClock, 500000);
 #else
-    CANBitRateSet((uint32_t)CAN0_BASE, (uint32_t)SysCtlClockGet(), (uint32_t)500000);
+    CANBitRateSet((uint32_t)CAN0_BASE, (uint32_t)SysCtlClockGet(), (uint32_t)1000000);
 #endif
 
     /*Setup Interrupt on CAN0*/

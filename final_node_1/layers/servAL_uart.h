@@ -11,9 +11,9 @@
 #include "utils/uartstdio.h"
 
 void uart_init(void);
-uint8_t uart_receive(void);
+uint32_t uart_receive(void);
 void uart_send(uint8_t ui8_send_char);
 
-uint8_t ui8_rec_char;
+uint32_t ui32_rec_char;
 
 #endif /* __SERVAL_UART_H__ */

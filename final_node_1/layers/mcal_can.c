@@ -6,6 +6,8 @@ volatile bool g_bRXFlag = 0;
 volatile bool g_bTXFlag = 0;
 volatile uint32_t g_ui32MsgCount = 0;
 
+volatile bool g_Diagnostic_Flag = 0;
+
 const bool set = 1;
 const bool clear = 0;
 
@@ -21,7 +23,6 @@ CANIntHandler(void)
     /*If an error occurred*/
     if(ui32Status == (uint32_t)CAN_INT_INTID_STATUS)
     {
-        UARTprintf("ERROR ");
         ui32Status = CANStatusGet((uint32_t)CAN0_BASE, CAN_STS_CONTROL);
 
         /*set the error flag*/
@@ -31,7 +32,6 @@ CANIntHandler(void)
     /*message received*/
     else if(ui32Status == (uint32_t)1)
     {
-        UARTprintf("RECEIVED ");
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)1);
 
@@ -45,12 +45,23 @@ CANIntHandler(void)
     /*message sent*/
     else if(ui32Status == (uint32_t)2)
     {
-        UARTprintf("SENT ");
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)2);
 
         /*raise TX flag*/
         g_bTXFlag = set;
+
+        /*clear error flag*/
+        g_bErrFlag = clear;
+    }
+    else if(ui32Status == (uint32_t)6)
+    {
+        UARTprintf("a7a\n");
+        /*clear interrupt flag*/
+        CANIntClear((uint32_t)CAN0_BASE, (uint32_t)6);
+
+        /*raise TX flag*/
+        g_Diagnostic_Flag = set;
 
         /*clear error flag*/
         g_bErrFlag = clear;
@@ -107,7 +118,7 @@ CAN_init(void)
     defined(TARGET_IS_TM4C129_RA2)
     CANBitRateSet(CAN0_BASE, ui32SysClock, 500000);
 #else
-    CANBitRateSet((uint32_t)CAN0_BASE, (uint32_t)SysCtlClockGet(), (uint32_t)500000);
+    CANBitRateSet((uint32_t)CAN0_BASE, (uint32_t)SysCtlClockGet(), (uint32_t)1000000);
 #endif
 
     /*Setup Interrupt on CAN0*/
