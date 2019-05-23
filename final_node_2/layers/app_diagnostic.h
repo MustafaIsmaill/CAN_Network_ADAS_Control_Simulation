@@ -1,5 +1,5 @@
-#ifndef __APP_SENSOR_H__
-#define __APP_SENSOR_H__
+#ifndef __APP_DIAGNOSTIC_H__
+#define __APP_DIAGNOSTIC_H__
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -14,17 +14,11 @@
 #include "driverlib/uart.h"
 #include "utils/uartstdio.h"
 
-#include "ecual_sensor.h"
 #include "servAL_uart.h"
 #include "servAL_can.h"
+#include "servAL_delay.h"
+#include "servAL_diagnostic.h"
 
-extern int8_t err_flag;
-extern uint8_t ui8_duty_cycle;
-extern int8_t i8_distance;
-extern uint8_t ui8_command;
+void diagnostic_runnable(void);
 
-bool isChanged(void);
-void distance_sensor_runnable(void);
-void sensor_overwrite(uint8_t dc);
-
-#endif /*__APP_SENSOR_H__*/
+#endif /*__APP_DIAGNOSTIC_H__*/

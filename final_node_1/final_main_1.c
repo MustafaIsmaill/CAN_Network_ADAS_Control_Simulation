@@ -34,6 +34,7 @@ main(void)
     create_token_receive_object();
     create_token_send_object();
     create_diagnostic_send_object();
+    create_diagnostic_receive_object();
 
     while(1)
     {

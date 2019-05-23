@@ -39,5 +39,12 @@ diagnostic_runnable(void)
         }
         ui8_prev_service = ui8_service;
     }
+
+    if(g_Diagnostic_Flag)
+    {
+        diagnostic_can_receive();
+        g_Diagnostic_Flag = 0;
+    }
+
     delay_msec(ui32_delay_ms);
 }

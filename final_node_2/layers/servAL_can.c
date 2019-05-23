@@ -1,5 +1,7 @@
 #include "servAL_can.h"
 
+uint8_t pui8MsgDiagnostic_received[3];
+
 void
 token_can_receive(void)
 {
@@ -30,9 +32,34 @@ void
 diagnostic_can_receive(void)
 {
     CANMessageGet((uint32_t)CAN0_BASE, (uint32_t)6, &sCANDiagnostic_received, (uint8_t)0);
-    UARTprintf("%X\n", pui8MsgDiagnostic_received[0]);
-    UARTprintf("%X\n", pui8MsgDiagnostic_received[1]);
-    UARTprintf("%X\n", pui8MsgDiagnostic_received[2]);
+//    UARTprintf("%X\n", pui8MsgDiagnostic_received[0]);
+//    UARTprintf("%X\n", pui8MsgDiagnostic_received[1]);
+//    UARTprintf("%X\n", pui8MsgDiagnostic_received[2]);
+}
+
+void
+diagnostic_can_send(uint8_t b1, uint8_t b2, uint8_t b3)
+{
+    ui32MsgDiagnostic_sent[0] = b1;
+    ui32MsgDiagnostic_sent[1] = b2;
+    ui32MsgDiagnostic_sent[2] = b3;
+    CANMessageSet((uint32_t)CAN0_BASE, (uint32_t)7, &sCANDiagnostic_sent, MSG_OBJ_TYPE_TX);
+}
+
+void
+create_diagnostic_send_object(void)
+{
+    pui8MsgDiagnostic_sent = (uint8_t *)&ui32MsgDiagnostic_sent;
+
+    ui32MsgDiagnostic_sent[0] = 0;
+    ui32MsgDiagnostic_sent[1] = 0;
+    ui32MsgDiagnostic_sent[2] = 0;
+    sCANDiagnostic_sent.ui32MsgID = (uint32_t)7;
+    sCANDiagnostic_sent.ui32MsgIDMask = (uint32_t)0;
+    sCANDiagnostic_sent.ui32Flags = (uint32_t)MSG_OBJ_TX_INT_ENABLE;
+    sCANDiagnostic_sent.ui32MsgLen = (uint32_t)3;
+    sCANDiagnostic_sent.pui8MsgData = pui8MsgDiagnostic_sent;
+    CANMessageSet((uint32_t)CAN0_BASE, (uint32_t)7, &sCANDiagnostic_sent, MSG_OBJ_TYPE_TX);
 }
 
 void

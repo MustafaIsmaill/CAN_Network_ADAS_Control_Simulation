@@ -28,12 +28,18 @@ tCANMsgObject sCANDiagnostic_sent;
 uint8_t ui32MsgDiagnostic_sent[3];
 uint8_t *pui8MsgDiagnostic_sent;
 
+/* DIAGNOSTIC RECEIVE OBJECT */
+tCANMsgObject sCANDiagnostic_received;
+extern uint8_t pui8MsgDiagnostic_received[3];
+
 void create_token_send_object(void);
 void create_token_receive_object(void);
+void create_diagnostic_receive_object(void);
 void create_diagnostic_send_object(void);
 
 void token_can_send(void);
 void token_can_receive(void);
 void diagnostic_can_send(uint8_t b1, uint8_t b2, uint8_t b3);
+void diagnostic_can_receive(void);
 
 #endif /*__SERVAL_CAN_H__*/

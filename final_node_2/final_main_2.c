@@ -34,6 +34,7 @@ main(void)
     create_distance_send_object();
     create_command_send_object();
     create_diagnostic_receive_object();
+    create_diagnostic_send_object();
 
     StartUpState();
 
@@ -41,10 +42,6 @@ main(void)
     {
         token_ring_runnable();
         distance_sensor_runnable();
-        if(g_diagnostic_Flag)
-        {
-            diagnostic_can_receive();
-            g_diagnostic_Flag = 0;
-        }
+        diagnostic_runnable();
     }
 }

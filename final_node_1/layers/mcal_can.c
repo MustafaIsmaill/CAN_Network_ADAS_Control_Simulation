@@ -56,11 +56,18 @@ CANIntHandler(void)
     }
     else if(ui32Status == (uint32_t)6)
     {
-        UARTprintf("a7a\n");
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)6);
 
-        /*raise TX flag*/
+        /*clear error flag*/
+        g_bErrFlag = clear;
+    }
+    else if(ui32Status == (uint32_t)7)
+    {
+        /*clear interrupt flag*/
+        CANIntClear((uint32_t)CAN0_BASE, (uint32_t)7);
+
+        /*raise RX flag*/
         g_Diagnostic_Flag = set;
 
         /*clear error flag*/

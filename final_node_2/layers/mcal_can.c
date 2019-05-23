@@ -80,6 +80,14 @@ CANIntHandler(void)
         /*clear error flag*/
         g_bErrFlag = clear;
     }
+    else if(ui32Status == (uint32_t)7)
+    {
+        /*clear interrupt flag*/
+        CANIntClear((uint32_t)CAN0_BASE, (uint32_t)7);
+
+        /*clear error flag*/
+        g_bErrFlag = clear;
+    }
     else
     {
 
