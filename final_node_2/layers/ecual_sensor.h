@@ -25,9 +25,9 @@
  * D = 68
  * M = 77
  *  */
-enum state {error = 69, fire = 70, brake = 66, decrease = 68, maintain = 77};
+enum state {error = 69, fire = 70, brake = 66, decrease = 68, maintain = 77, nerror = 80};
 
-int8_t calc_distance(uint8_t ui8_duty_cycle);
+int8_t calc_distance(uint8_t ddc);
 uint8_t compute_cmd(int8_t ui8_distance);
 
 #endif /*__ECUAL_SENSOR_H__*/

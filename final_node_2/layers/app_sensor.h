@@ -26,5 +26,6 @@ extern uint8_t ui8_command;
 bool isChanged(void);
 void distance_sensor_runnable(void);
 void sensor_overwrite(uint8_t dc);
+void sensor_clear_error(void);
 
 #endif /*__APP_SENSOR_H__*/

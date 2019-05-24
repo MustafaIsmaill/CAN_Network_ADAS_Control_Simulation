@@ -11,6 +11,7 @@
 #include "servAL_delay.h"
 #include "servAL_led.h"
 #include "mcal_can.h"
+#include "servAL_lcd.h"
 
 #define HIGH    1U
 #define LOW     0U

@@ -6,6 +6,7 @@
 #include "driverlib/sysctl.h"
 
 void delay_msec(uint32_t ms);
+void delay_us(uint32_t us);
 void delay_one_sec(void);
 
 #endif /* __SERVAL_DELAY_H__ */

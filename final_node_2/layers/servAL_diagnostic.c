@@ -30,6 +30,7 @@ get_reply_data(int8_t serv_id, int8_t param)
         case 0x14:
             err_flag = 0;
             ret_val = 0;
+            sensor_clear_error();
             break;
         /* read sensor data */
         case 0x22:

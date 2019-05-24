@@ -23,7 +23,10 @@ uint8_t byte1;
 uint8_t byte2;
 uint8_t byte3;
 
+enum state {error = 69, fire = 70, brake = 66, decrease = 68, maintain = 77, nerror = 80};
+
 bool isChanged(void);
 void diagnostic_runnable(void);
+void print_reply(void);
 
 #endif /*__APP_DIAGNOSTIC_H__*/

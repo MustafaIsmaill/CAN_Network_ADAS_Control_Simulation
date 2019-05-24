@@ -57,3 +57,10 @@ sensor_overwrite(uint8_t dc)
     distance_can_send(i8_distance);
     command_can_send(ui8_command);
 }
+
+void
+sensor_clear_error(void)
+{
+    distance_can_send((int8_t)0);
+    command_can_send((uint8_t)80);
+}

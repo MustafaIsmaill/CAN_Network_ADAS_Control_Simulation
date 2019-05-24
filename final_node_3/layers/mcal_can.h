@@ -27,6 +27,8 @@ extern volatile bool g_bTXFlag;
 extern volatile bool g_bRX_Distance_Flag;
 /*A flag to indicate that command message has been received*/
 extern volatile bool g_bRX_Command_Flag;
+/*A flag to indicate that diagnostic was received.*/
+extern volatile bool g_diagnostic_Flag;
 
 /*Function declarations*/
 void CANIntHandler(void);

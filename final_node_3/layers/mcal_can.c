@@ -9,6 +9,8 @@ volatile uint32_t g_ui32MsgCount = 0;
 volatile bool g_bRX_Distance_Flag = 0;
 volatile bool g_bRX_Command_Flag = 0;
 
+volatile bool g_diagnostic_Flag = 0;
+
 const bool set = 1;
 const bool clear = 0;
 
@@ -73,6 +75,24 @@ CANIntHandler(void)
 
         /*raise RX flag*/
         g_bRX_Command_Flag = set;
+
+        /*clear error flag*/
+        g_bErrFlag = clear;
+    }
+    else if(ui32Status == (uint32_t)6)
+    {
+        /*clear interrupt flag*/
+        CANIntClear((uint32_t)CAN0_BASE, (uint32_t)6);
+
+        g_diagnostic_Flag = set;
+
+        /*clear error flag*/
+        g_bErrFlag = clear;
+    }
+    else if(ui32Status == (uint32_t)7)
+    {
+        /*clear interrupt flag*/
+        CANIntClear((uint32_t)CAN0_BASE, (uint32_t)7);
 
         /*clear error flag*/
         g_bErrFlag = clear;

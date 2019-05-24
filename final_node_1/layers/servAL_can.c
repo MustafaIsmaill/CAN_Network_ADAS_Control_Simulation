@@ -27,9 +27,6 @@ void
 diagnostic_can_receive(void)
 {
     CANMessageGet((uint32_t)CAN0_BASE, (uint32_t)7, &sCANDiagnostic_received, (uint8_t)0);
-    UARTprintf("%X\n", pui8MsgDiagnostic_received[0]);
-    UARTprintf("%X\n", pui8MsgDiagnostic_received[1]);
-    UARTprintf("%i\n", pui8MsgDiagnostic_received[2]);
 }
 
 void

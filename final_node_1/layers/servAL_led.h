@@ -16,8 +16,8 @@
 #define HIGH    1U
 #define LOW     0U
 
-#define SYSCTL_PERIPH_GPIOF     0xf0000805U
-#define GPIO_PORTF_BASE         0x40025000U
+/*#define SYSCTL_PERIPH_GPIOF     0xf0000805U
+#define GPIO_PORTF_BASE         0x40025000U*/
 
 void portF_init(void);
 void Set_Led_Status(uint8_t led, uint8_t stat);

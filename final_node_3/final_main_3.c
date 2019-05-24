@@ -19,6 +19,8 @@
 #include "layers/servAL_delay.h"
 #include "layers/servAL_uart.h"
 #include "layers/app_control.h"
+#include "layers/ecual_lcd.h"
+#include "layers/servAL_lcd.h"
 
 uint8_t main(void);
 
@@ -29,10 +31,15 @@ main(void)
     portF_init();
     uart_init();
 
+    lcdInit((uint8_t)FUNCTION_SET_2_LINES, (uint8_t)ENTRY_MODE_SET_INCREMENT,
+                (uint8_t)DISPLAY_ON | (uint8_t)DISPLAY_CURSOR | (uint8_t)DISPLAY_CURSOR_BLINK);
+
     create_token_receive_object();
     create_token_send_object();
     create_distance_receive_object();
     create_command_receive_object();
+    create_diagnostic_receive_object();
+    create_diagnostic_send_object();
 
     StartUpState();
 
@@ -40,5 +47,6 @@ main(void)
     {
         token_ring_runnable();
         control_runnable();
+        diagnostic_runnable();
     }
 }

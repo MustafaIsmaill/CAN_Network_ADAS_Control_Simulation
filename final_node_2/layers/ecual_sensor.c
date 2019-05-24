@@ -1,13 +1,13 @@
 #include "ecual_sensor.h"
 
 int8_t
-calc_distance(uint8_t ui8_duty_cycle)
+calc_distance(uint8_t ddc)
 {
-    return floor((0.75*ui8_duty_cycle)-7.5);
+    return floor((0.75*ddc)-7.5);
 }
 
 uint8_t
-compute_cmd(int8_t i8_distance)
+compute_cmd(int8_t ui8_distance)
 {
     if(i8_distance < 0) {return error;}
     else if(i8_distance == 0) {return fire;}

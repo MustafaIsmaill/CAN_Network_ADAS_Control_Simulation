@@ -19,6 +19,21 @@ bool isChanged(void)
     return flag;
 }
 
+void
+print_reply(void)
+{
+/*    UARTprintf("%X\n", pui8MsgDiagnostic_received[0]);
+    UARTprintf("%X\n", pui8MsgDiagnostic_received[1]);*/
+
+    if(pui8MsgDiagnostic_received[2] == error){ UARTprintf("Error\n"); }
+    else if(pui8MsgDiagnostic_received[2] == fire) { UARTprintf("Fire Airbag\n"); }
+    else if(pui8MsgDiagnostic_received[2] == brake) { UARTprintf("Brake\n"); }
+    else if(pui8MsgDiagnostic_received[2] == decrease) { UARTprintf("Decrease speed\n"); }
+    else if(pui8MsgDiagnostic_received[2] == maintain) { UARTprintf("Maintain speed\n"); }
+    else if(pui8MsgDiagnostic_received[2] == nerror) { UARTprintf("No Error\n"); }
+    else { UARTprintf("%i\n", pui8MsgDiagnostic_received[2]); }
+}
+
 uint8_t msg_counter = 0;
 int8_t bb1, bb2, bb3;
 
@@ -43,7 +58,8 @@ diagnostic_runnable(void)
     if(g_Diagnostic_Flag)
     {
         diagnostic_can_receive();
-        g_Diagnostic_Flag = 0;
+        print_reply();
+        g_Diagnostic_Flag = (uint8_t)0;
     }
 
     delay_msec(ui32_delay_ms);
