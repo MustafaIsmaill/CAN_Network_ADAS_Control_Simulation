@@ -37,6 +37,6 @@ enum state {error = 69, fire = 70, brake = 66, decrease = 68, maintain = 77, ner
 
 void sensor_overwrite(uint8_t dc);
 int8_t calc_distance(uint8_t ui8_duty_cycle);
-uint8_t compute_cmd(int8_t ui8_distance);
+uint8_t compute_cmd(int8_t i8_distance);
 
 #endif /*__ECUAL_SENSOR_H__*/

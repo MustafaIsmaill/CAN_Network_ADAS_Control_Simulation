@@ -43,7 +43,7 @@ calc_distance(uint8_t ui8_duty_cycle) /*Calculates the distance */
  * Description: Computes the commanc according to the duty cycle
  *****************************************************************/
 uint8_t
-compute_cmd(int8_t i8_distance
+compute_cmd(int8_t i8_distance)
 {
     if(i8_distance < 0) {return error;}
     else if(i8_distance == 0) {return fire;}

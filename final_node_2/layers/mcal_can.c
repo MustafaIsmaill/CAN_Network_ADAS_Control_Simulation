@@ -32,20 +32,20 @@ void
 CANIntHandler(void)
 {
     /*Create variable to indicate current status*/
-    uint32_t ui32Status;
+    uint32_t ui32_Status;
 
-    ui32Status = CANIntStatus((uint32_t)CAN0_BASE, CAN_INT_STS_CAUSE);
+    ui32_Status = CANIntStatus((uint32_t)CAN0_BASE, CAN_INT_STS_CAUSE);
 
     /*If an error occurred*/
-    if(ui32Status == (uint32_t)CAN_INT_INTID_STATUS)
+    if(ui32_Status == (uint32_t)CAN_INT_INTID_STATUS)
     {
-        ui32Status = CANStatusGet((uint32_t)CAN0_BASE, CAN_STS_CONTROL);
+        ui32_Status = CANStatusGet((uint32_t)CAN0_BASE, CAN_STS_CONTROL);
 
         /*set the error flag*/
         g_bErrFlag = set;
     }
     /*message received*/
-    else if(ui32Status == (uint32_t)1)
+    else if(ui32_Status == (uint32_t)1)
     {
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)1);
@@ -57,7 +57,7 @@ CANIntHandler(void)
         g_bErrFlag = clear;
     }
     /*message sent*/
-    else if(ui32Status == (uint32_t)2)
+    else if(ui32_Status == (uint32_t)2)
     {
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)2);
@@ -69,7 +69,7 @@ CANIntHandler(void)
         g_bErrFlag = clear;
     }
     /*distance sent*/
-    else if(ui32Status == (uint32_t)4)
+    else if(ui32_Status == (uint32_t)4)
     {
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)4);
@@ -78,7 +78,7 @@ CANIntHandler(void)
         g_bErrFlag = clear;
     }
     /*command sent*/
-    else if(ui32Status == (uint32_t)5)
+    else if(ui32_Status == (uint32_t)5)
     {
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)5);
@@ -86,17 +86,17 @@ CANIntHandler(void)
         /*clear error flag*/
         g_bErrFlag = clear;
     }
-    else if(ui32Status == (uint32_t)6)
+    else if(ui32_Status == (uint32_t)6)
     {
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)6);
 
-        g_diagnostic_Flag = set;
+        g_Diagnostic_Flag = set;
 
         /*clear error flag*/
         g_bErrFlag = clear;
     }
-    else if(ui32Status == (uint32_t)7)
+    else if(ui32_Status == (uint32_t)7)
     {
         /*clear interrupt flag*/
         CANIntClear((uint32_t)CAN0_BASE, (uint32_t)7);

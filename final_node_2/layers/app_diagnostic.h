@@ -25,6 +25,7 @@
 #include "servAL_can.h"
 #include "servAL_delay.h"
 #include "servAL_diagnostic.h"
+#include "mcal_can.h"
 
 void diagnostic_runnable(void);
 

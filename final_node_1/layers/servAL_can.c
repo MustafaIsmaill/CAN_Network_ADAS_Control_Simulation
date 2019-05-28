@@ -40,12 +40,12 @@ token_can_receive(void) /*Recieves a CAN message object with token */
 void
 diagnostic_can_send(uint8_t b1, uint8_t b2, uint8_t b3) /* Sends a CAN message with diagnostic */
 {
-{
     ui32MsgDiagnostic_sent[0] = b1;
     ui32MsgDiagnostic_sent[1] = b2;
     ui32MsgDiagnostic_sent[2] = b3;
     CANMessageSet((uint32_t)CAN0_BASE, (uint32_t)6, &sCANDiagnostic_sent, MSG_OBJ_TYPE_TX);
 }
+
 /*****************************************************************
  * Function Name: diagnostic_can_send
  * Inputs: void
@@ -53,10 +53,11 @@ diagnostic_can_send(uint8_t b1, uint8_t b2, uint8_t b3) /* Sends a CAN message w
  * Description: Recieves a CAN message with diagnostic
  *****************************************************************/
 void
-diagnostic_can_receive(void) /* Recieves a CAN message with diagnostic */
+diagnostic_can_receive(void)
 {
     CANMessageGet((uint32_t)CAN0_BASE, (uint32_t)7, &sCANDiagnostic_received, (uint8_t)0);
 }
+
 /*****************************************************************
  * Function Name: diagnostic_can_send
  * Inputs: void

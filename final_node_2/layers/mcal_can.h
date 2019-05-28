@@ -1,5 +1,5 @@
 /*****************************************************************
- * Module Name: mcal_can.ا
+ * Module Name: mcal_can.h
  * Author: Mustafa Ismail
  * Purpose: contains MCAL components for the CAN BUS.
  *****************************************************************/
@@ -30,7 +30,7 @@ extern volatile bool g_bRXFlag;
 /*A flag to indicate that a message has been transmitted*/
 extern volatile bool g_bTXFlag;
 /*A flag to indicate that diagnostic was received.*/
-extern volatile bool g_diagnostic_Flag;
+extern volatile bool g_Diagnostic_Flag;
 
 /*Function declarations*/
 void CANIntHandler(void);
