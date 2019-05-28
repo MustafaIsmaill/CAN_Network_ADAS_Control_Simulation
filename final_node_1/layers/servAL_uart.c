@@ -1,7 +1,20 @@
+/*****************************************************************
+ * Module Name: servAL_uart.c
+ * Author: Mustafa Ismail
+ * Purpose: contains service layer components for the UART
+ *          functionalities.
+ *****************************************************************/
+
 #include "servAL_uart.h"
 
+/*****************************************************************
+ * Function Name: uart_init
+ * Inputs: void
+ * Outputs: void
+ * Description: initialize UART, portA, baudrate: 256000
+ *****************************************************************/
 void
-uart_init(void)
+uart_init(void) /*initalize UART */
 {
     SysCtlPeripheralEnable((uint32_t)SYSCTL_PERIPH_GPIOA);
 
@@ -17,8 +30,14 @@ uart_init(void)
     UARTStdioConfig((uint32_t)0, (uint32_t)256000, (uint32_t)16000000);
 }
 
+/*****************************************************************
+ * Function Name: uart_receive
+ * Inputs: void
+ * Outputs: uint32_t received character
+ * Description: UART recieving function
+ *****************************************************************/
 uint32_t
-uart_receive(void)
+uart_receive(void) /*UART recieving function */
 {
     if(UARTCharsAvail((uint32_t)UART0_BASE))
     {
@@ -27,8 +46,14 @@ uart_receive(void)
     return ui32_rec_char;
 }
 
+/*****************************************************************
+ * Function Name: uart_send
+ * Inputs: uint8_t character
+ * Outputs: void
+ * Description: UART recieving function
+ *****************************************************************/
 void
-uart_send(uint8_t ui8_send_char)
+uart_send(uint8_t ui8_send_char) /*UART sending function */
 {
     UARTprintf("%i ", ui8_send_char);
 }

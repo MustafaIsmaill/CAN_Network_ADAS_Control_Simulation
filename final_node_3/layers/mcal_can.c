@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: mcal_can.c
+ * Author: Mustafa Ismail
+ * Purpose: contains MCAL components for the CAN BUS.
+ *****************************************************************/
+
 #include "mcal_can.h"
 
 /*Initialization of variables*/
@@ -15,6 +21,12 @@ const bool set = 1;
 const bool clear = 0;
 
 /*Interrupt Handler for CAN communication*/
+/*****************************************************************
+ * Function Name:CANIntHandler
+ * Inputs: void
+ * Outputs: void
+ * Description: Interrupt Handler for CAN communication
+ *****************************************************************/
 void
 CANIntHandler(void)
 {
@@ -106,7 +118,14 @@ CANIntHandler(void)
 #define SYSCTL_PERIPH_CAN0      0xf0003400U
 #define SYSCTL_PERIPH_GPIOB     0xf0000801U
 
-/*Initialization of CAN0*/
+/*****************************************************************
+ * Function Name: CAN_init
+ * Inputs: void
+ * Outputs: void
+ * Description: Initialization of CAN0 for portB and bitrate of
+ *              1 Mbps
+ *              
+ *****************************************************************/
 void
 CAN_init(void)
 {

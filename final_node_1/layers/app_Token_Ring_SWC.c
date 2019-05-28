@@ -1,6 +1,14 @@
+/*****************************************************************
+ * Module Name: app_Token_Ring_SWC.c
+ * Author: Mustafa Ismail
+ * Purpose: contains application layer component for the token
+ *          ring handling.
+ *****************************************************************/
+
 #include "app_Token_Ring_SWC.h"
 #include "mcal_can.h"
 
+/* constant bool defined as 0 */
 const bool FALSE = 0;
 
 void

@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: app_FSM
+ * Author: Mustafa Ismail
+ * Purpose: Sets the startup state
+ *****************************************************************/
+
 #ifndef __APP_FSM_H__
 #define __APP_FSM_H__
 

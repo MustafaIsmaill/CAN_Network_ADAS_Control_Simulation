@@ -1,8 +1,20 @@
+/*****************************************************************
+ * Module Name: app_Token_Ring_SWC
+ * Author: Mustafa Ismail
+ * Purpose: contains token ring app layer components
+ *****************************************************************/
+
 #include "app_Token_Ring_SWC.h"
 #include "mcal_can.h"
 
 const bool FALSE = 0;
-
+/*****************************************************************
+ * Function Name: token_ring_runnable
+ * Inputs: void
+ * Outputs: void
+ * Description: Checks if a message is recieved and take send token
+				and turn on led
+ *****************************************************************/
 void
 token_ring_runnable(void)
 {

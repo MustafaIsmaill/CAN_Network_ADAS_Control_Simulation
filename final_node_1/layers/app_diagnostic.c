@@ -1,10 +1,29 @@
+/*****************************************************************
+ * Module Name: app_diagnostic.c
+ * Author: Mustafa Ismail
+ * Purpose: contains application layer components for the
+ *          diagnostic part.
+ *****************************************************************/
+
 #include "app_diagnostic.h"
 
+/* initialize variable to hold service id */
 int8_t ui8_service = 0;
+
+/* initialize variable to hold previous service id */
 int8_t ui8_prev_service = 0;
 
+/* initialize constant to hold runnable delay value */
 const uint32_t ui32_delay_ms = 10;
 
+/*****************************************************************
+ * Function Name: isChanged
+ * Inputs: void
+ * Outputs: boolean
+ * Description: checks if newly received diagnostic is the same
+ *              as the previously received diagnostic or not and
+ *              returns a boolean flag.
+ *****************************************************************/
 bool isChanged(void)
 {
     uint8_t flag;
@@ -19,12 +38,16 @@ bool isChanged(void)
     return flag;
 }
 
+/*****************************************************************
+ * Function Name: print_reply
+ * Inputs: void
+ * Outputs: void
+ * Description: prints received diagnostic msg from node 1 or 2
+ *              to the UART
+ *****************************************************************/
 void
-print_reply(void)
+print_reply(void) /*Prints the reply to the LCD */
 {
-/*    UARTprintf("%X\n", pui8MsgDiagnostic_received[0]);
-    UARTprintf("%X\n", pui8MsgDiagnostic_received[1]);*/
-
     if(pui8MsgDiagnostic_received[2] == error){ UARTprintf("Error\n"); }
     else if(pui8MsgDiagnostic_received[2] == fire) { UARTprintf("Fire Airbag\n"); }
     else if(pui8MsgDiagnostic_received[2] == brake) { UARTprintf("Brake\n"); }
@@ -34,9 +57,20 @@ print_reply(void)
     else { UARTprintf("%i\n", pui8MsgDiagnostic_received[2]); }
 }
 
+/* initialize variable to hold received bytes counter */
 uint8_t msg_counter = 0;
+
+/* initialize variable to hold the three received bytes */
 int8_t bb1, bb2, bb3;
 
+/*****************************************************************
+ * Function Name: diagnostic_runnable
+ * Inputs: void
+ * Outputs: void
+ * Description: waits for UART buffer to have new msgs from the
+ *              diagnostics and then sends the request over
+ *              CAN BUS
+ *****************************************************************/
 void
 diagnostic_runnable(void)
 {
@@ -55,7 +89,7 @@ diagnostic_runnable(void)
         ui8_prev_service = ui8_service;
     }
 
-    if(g_Diagnostic_Flag)
+    if(g_Diagnostic_Flag) /* Check diagonistic flag if diagnostic message is sent or not */
     {
         diagnostic_can_receive();
         print_reply();

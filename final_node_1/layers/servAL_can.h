@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: servAL_can.h
+ * Author: Mustafa Ismail
+ * Purpose: contains service layer components for the CAN BUS.
+ *****************************************************************/
+
 #ifndef __SERVAL_CAN_H__
 #define __SERVAL_CAN_H__
 

@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: ecual_sensor
+ * Author: Mustafa Ismail
+ * Purpose: Calculates the duty cycles and calculates commands
+ *****************************************************************/
+
 #ifndef __ECUAL_SENSOR_H__
 #define __ECUAL_SENSOR_H__
 

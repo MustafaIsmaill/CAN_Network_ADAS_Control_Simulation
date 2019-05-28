@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: mcal_can.h
+ * Author: Mustafa Ismail
+ * Purpose: contains MCAL components for the CAN BUS.
+ *****************************************************************/
+
 #ifndef __MCAL_CAN_H__
 #define __MCAL_CAN_H__
 
@@ -23,7 +29,7 @@ extern volatile bool g_bErrFlag;
 extern volatile bool g_bRXFlag;
 /*A flag to indicate that a message has been transmitted*/
 extern volatile bool g_bTXFlag;
-
+/*A flag to indicate that a diagnostic message has been received*/
 extern volatile bool g_Diagnostic_Flag;
 
 /*Function declarations*/

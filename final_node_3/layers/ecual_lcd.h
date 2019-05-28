@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: ecual_lcd
+ * Author: Mustafa Ismail
+ * Purpose: Enables the lcd and writes commands and data
+ *****************************************************************/
+
 #ifndef __ECUAL_LCD_H__
 #define __ECUAL_LCD_H__
 

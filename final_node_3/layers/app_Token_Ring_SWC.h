@@ -1,3 +1,10 @@
+
+/*****************************************************************
+ * Module Name: app_Token_Ring_SWC
+ * Author: Mustafa Ismail
+ * Purpose: Application layer component for token ring handling
+ *****************************************************************/
+
 #ifndef __APP_TOKEN_RING_SWC_H__
 #define __APP_TOKEN_RING_SWC_H__
 

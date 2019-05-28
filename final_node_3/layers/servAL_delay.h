@@ -1,3 +1,10 @@
+/*****************************************************************
+ * Module Name: servAL_delay.h
+ * Author: Mustafa Ismail
+ * Purpose: contains service layer components for the delay
+ *          functionalities.
+ *****************************************************************/
+
 #ifndef __SERVAL_DELAY_H__
 #define __SERVAL_DELAY_H__
 

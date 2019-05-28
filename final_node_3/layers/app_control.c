@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: app_control
+ * Author: Mustafa Ismail
+ * Purpose: Prints commands and waits for the duty cycle 
+ *****************************************************************/
+
 #include "app_control.h"
 
 int8_t distance = 0;
@@ -8,8 +14,14 @@ uint8_t err_flag = 0;
 
 const bool reset = 0;
 
+/*****************************************************************
+ * Function Name: print_cmd
+ * Inputs: uint8_t
+ * Outputs: void
+ * Description: Prints the commands to the LCD
+ *****************************************************************/
 void
-print_cmd(uint8_t cmd)
+print_cmd(uint8_t cmd) /*Prints the commands to the LCD */
 {
     switch(cmd) {
        case error:
@@ -39,8 +51,15 @@ print_cmd(uint8_t cmd)
     }
 }
 
+/*****************************************************************
+ * Function Name: control_runnable
+ * Inputs: void
+ * Outputs: void
+ * Description: Waits for the distance to be sent and then decide
+ *			    accordingly
+ *****************************************************************/
 void
-control_runnable(void)
+control_runnable(void) /*Waits for the distance to be sent and then decide accordingly */
 {
     if(g_bRX_Distance_Flag)
     {

@@ -1,3 +1,10 @@
+/*****************************************************************
+ * Module Name: app_FSM.h
+ * Author: Mustafa Ismail
+ * Purpose: contains application layer components for the
+ *          diagnostic part.
+ *****************************************************************/
+
 #ifndef __APP_FSM_H__
 #define __APP_FSM_H__
 

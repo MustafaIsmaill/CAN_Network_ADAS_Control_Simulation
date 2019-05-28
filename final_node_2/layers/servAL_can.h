@@ -1,3 +1,10 @@
+/*****************************************************************
+ * Module Name: servAL_can
+ * Author: Mustafa Ismail
+ * Purpose: Sends and recieves different CAN messages with 
+ *			different data
+ *****************************************************************/
+
 #ifndef __SERVAL_CAN_H__
 #define __SERVAL_CAN_H__
 

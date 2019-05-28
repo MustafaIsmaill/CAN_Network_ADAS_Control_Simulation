@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: servAL_lcd
+ * Author: Mustafa Ismail
+ * Purpose: Initializations and writing data to the lcd
+ *****************************************************************/
+
 #ifndef __SERVAL_LCD_H__
 #define __SERVAL_LCD_H__
 

@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: servAL_delay
+ * Author: Mustafa Ismail
+ * Purpose: delay for milliseconds function and delay for 1 second
+ *****************************************************************/
+
 #ifndef __SERVAL_DELAY_H__
 #define __SERVAL_DELAY_H__
 

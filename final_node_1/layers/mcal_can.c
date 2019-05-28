@@ -1,17 +1,37 @@
+/*****************************************************************
+ * Module Name: mcal_can.c
+ * Author: Mustafa Ismail
+ * Purpose: contains MCAL components for the CAN BUS.
+ *****************************************************************/
+
 #include "mcal_can.h"
 
-/*Initialization of variables*/
+/* Initialization of error flag variable */
 volatile bool g_bErrFlag = 0;
+/* Initialization of receive flag variable */
 volatile bool g_bRXFlag = 0;
+/* Initialization of transmit flag variable */
 volatile bool g_bTXFlag = 0;
+/* Initialization of msg counter variable */
 volatile uint32_t g_ui32MsgCount = 0;
-
+/* Initialization of diagnostic msg flag variable */
 volatile bool g_Diagnostic_Flag = 0;
 
+/* Initialization of constant value of 1 to set flags */
 const bool set = 1;
+/* Initialization of constant value of 0 to clear flags */
 const bool clear = 0;
 
 /*Interrupt Handler for CAN communication*/
+
+/*****************************************************************
+ * Function Name: CANIntHandler
+ * Inputs: void
+ * Outputs: void
+ * Description: Interrupt Handler for CAN communication
+ *              
+ *              
+ *****************************************************************/
 void
 CANIntHandler(void)
 {
@@ -82,7 +102,14 @@ CANIntHandler(void)
 #define SYSCTL_PERIPH_CAN0      0xf0003400U
 #define SYSCTL_PERIPH_GPIOB     0xf0000801U
 
-/*Initialization of CAN0*/
+/*****************************************************************
+ * Function Name: CAN_init
+ * Inputs: void
+ * Outputs: void
+ * Description: Initialization of CAN0 for portB and bitrate of
+ *              1 Mbps
+ *              
+ *****************************************************************/
 void
 CAN_init(void)
 {

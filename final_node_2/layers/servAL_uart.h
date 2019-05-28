@@ -1,3 +1,10 @@
+/*****************************************************************
+ * Module Name: servAL_uart.h
+ * Author: Mustafa Ismail
+ * Purpose: contains service layer components for the UART
+ *          functionalities.
+ *****************************************************************/
+
 #ifndef __SERVAL_UART_H__
 #define __SERVAL_UART_H__
 

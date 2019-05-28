@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: mcal_can.h
+ * Author: Mustafa Ismail
+ * Purpose: contains MCAL components for the CAN BUS.
+ *****************************************************************/
+
 #ifndef __MCAL_CAN_H__
 #define __MCAL_CAN_H__
 

@@ -1,3 +1,10 @@
+/*****************************************************************
+ * Module Name: ecual_sensor
+ * Author: Mustafa Ismail
+ * Purpose: Recieves duty cycles and calculates distances and 
+ *			commands
+ *****************************************************************/
+
 #ifndef __ECUAL_SENSOR_H__
 #define __ECUAL_SENSOR_H__
 

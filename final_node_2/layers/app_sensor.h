@@ -1,3 +1,10 @@
+/*****************************************************************
+ * Module Name: app_sensor
+ * Author: Mustafa Ismail
+ * Purpose: Checks the current reading from the sensor and waits
+ *			waits for a duty cycle to take action accordingly
+ *****************************************************************/
+
 #ifndef __APP_SENSOR_H__
 #define __APP_SENSOR_H__
 

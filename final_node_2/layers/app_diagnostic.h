@@ -1,3 +1,10 @@
+/*****************************************************************
+ * Module Name: app_diagnostic.h
+ * Author: Mustafa Ismail
+ * Purpose: contains application layer components for the
+ *          diagnostic part.
+ *****************************************************************/
+
 #ifndef __APP_DIAGNOSTIC_H__
 #define __APP_DIAGNOSTIC_H__
 

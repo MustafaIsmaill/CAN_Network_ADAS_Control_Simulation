@@ -1,3 +1,9 @@
+/*****************************************************************
+ * Module Name: app_control
+ * Author: Mustafa Ismail
+ * Purpose: Prints commands and waits for the duty cycle 
+ *****************************************************************/
+
 #ifndef __APP_CONTROL_H__
 #define __APP_CONTROL_H__
 

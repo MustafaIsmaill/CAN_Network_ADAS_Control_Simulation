@@ -1,3 +1,10 @@
+/*****************************************************************
+ * Module Name: servAL_diagnostic
+ * Author: Mustafa Ismail
+ * Purpose: contains service layer components for the diagnosis
+ *          functionality
+ *****************************************************************/
+
 #ifndef __SERVAL_DIAGNOSTIC_H__
 #define __SERVAL_DIAGNOSTIC_H__
 
